@@ -1,4 +1,5 @@
-![](http://www.riate.cnrs.fr/wp-content/uploads/2013/12/riate_orange_high-300x56.png)
+Faire des cartes avec R - Introduction au package sf
+====================================================
 
 </br> </br>
 
@@ -17,8 +18,8 @@ La construction d’une **carte thématique** se déroule en plusieurs étapes c
 
 [R](https://www.r-project.org/) est un logiciel et un langage, dont la première version officielle fut publiéé en 2000, qui permet l’utilisation de plusieurs techniques d’analyse statistique. Dès le début ses créateurs s'appliquèrent à rendre possible la contribution des utilisateurs dans son développement. Il est construit dans un langage qui permet de créer des fonctions et de les ajouter au logiciel. Ainsi, au fil des années, les possibilités d’utilisation de R s’élargissent via les *packages* et le rendent polyvalent. C’est pour cette raison qu’il concurrence ou qu’il remplace toute une gamme de logiciels et de langages préexistants (Giraud & Lambert, 2017), non seulement sur plusieurs terrains d'analyse statistique, mais aussi dans le monde de la représentation graphique. En effet, R propose d’intéressantes sorties graphiques tout en laissant aux utilisateurs un contrôle complet.
 
-Faire une carte de la Zone métropolitaine de la vallée de México
-================================================================
+Présentation des données
+------------------------
 
 L’objectif que nous nous donnons ici est de réaliser de réaliser de carte thématiques de la *Zone métropolitaine de la vallée de Mexico* (ZMVM). Nous utiliserons pour cela les Surfaces Géostatiques de Base (AGEB en espagnol), dont les géométries et les données associées sont distribuées par l’[Institut National de Géographie et Statistique du Mexique](http://www.inegi.org.mx/default.aspx) (INEGI en espagnol). La ZMVM est l’aire urbaine de la capitale du pays, formée par les 16 délégations de la Ville de Mexico et soixante municipalités voisines des États d'Hidalgo et de Mexico. Il s’agit d’une des agglomérations les plus peuplées du monde avec plus de 20 millions d’habitants.
 
@@ -91,8 +92,8 @@ Les données qui seront cartographiées portent sur la marginalité dans les zon
 </tbody>
 </table>
 
-Première partie : utiliser R comme un SIG
------------------------------------------
+Utiliser R comme un SIG - Premières explorations
+------------------------------------------------
 
 ### 1. Chargement des *packages*
 
@@ -212,7 +213,7 @@ plot(st_geometry(MEX_est),
      add = TRUE) # Ajouter cette couche à celle précedement affichée
 ```
 
-![](1_R-SIG_files/figure-markdown_github/unnamed-chunk-6-1.png)
+![](intro_sf_files/figure-markdown_github/unnamed-chunk-6-1.png)
 
 ### 4. Opérations de géotraitement
 
@@ -277,7 +278,7 @@ plot(st_geometry(emex_ageb), col = NA, border = "blue", lwd = 0.1, add=T)
 plot(st_geometry(hgo_ageb), col = NA, border = "green", lwd = 0.1, add=T)
 ```
 
-![](1_R-SIG_files/figure-markdown_github/unnamed-chunk-10-1.png)
+![](intro_sf_files/figure-markdown_github/unnamed-chunk-10-1.png)
 
 #### Selectionner des entités
 
@@ -294,7 +295,7 @@ plot(st_geometry(MEX_mun), col=NA, border = "blue")
 plot(st_geometry(ZMVM_mun), col = "red", border = NA, add = T)
 ```
 
-![](1_R-SIG_files/figure-markdown_github/unnamed-chunk-11-1.png)
+![](intro_sf_files/figure-markdown_github/unnamed-chunk-11-1.png)
 
 #### Agéger des polygones
 
@@ -316,7 +317,7 @@ plot(st_geometry(ZMVM_mun), col = "lightblue", border = "olivedrab", lwd = 0.5)
 plot(st_geometry(ZMVM), col = NA, border = 'brown4', lwd = 2, add=T)
 ```
 
-![](1_R-SIG_files/figure-markdown_github/unnamed-chunk-12-1.png)
+![](intro_sf_files/figure-markdown_github/unnamed-chunk-12-1.png)
 
 #### Extraire des centroides
 
@@ -341,7 +342,7 @@ plot(st_geometry(ZMVM_munC),
      add = T)
 ```
 
-![](1_R-SIG_files/figure-markdown_github/unnamed-chunk-13-1.png)
+![](intro_sf_files/figure-markdown_github/unnamed-chunk-13-1.png)
 
 ### 5. Gestion des bases de données
 
@@ -428,7 +429,7 @@ plot(ZMVM_ageb['DensPop'], border = NA, add=T)
 title("Densité de population")
 ```
 
-![](1_R-SIG_files/figure-markdown_github/unnamed-chunk-14-1.png)
+![](intro_sf_files/figure-markdown_github/unnamed-chunk-14-1.png)
 
 ### 6. Exporter les objets sf
 
@@ -450,4 +451,4 @@ saveRDS(object = ZMVM_mun, file = "data/rds/ZMVM_mun.rds")
 saveRDS(object = ZMVM_munC, file = "data/rds/ZMVM_munC.rds")
 ```
 
-Fin de la première partie du tutorat. Continuer avec la [deuxième partie](lelien2.com).
+[![](http://www.riate.cnrs.fr/wp-content/uploads/2013/12/riate_orange_high-300x56.png)](http://riate.cnrs.fr)
