@@ -136,3 +136,10 @@ mtext(text = " Auteur: S. Mora | Source: INEGI (2010), CONAPO (2012), Relief: IN
 #réinitialiser la fenêtre graphique
 par(opar)
 ```
+
+[1. Introduction générale au package `sf`](./intro_sf.md)
+[2. Faire une carte en figurés proportionnels](./propsymb.md)
+[3. Faire une carte choroplèthe](./choro.md)
+[4. Faire une carte en carroyage](./carro.md)
+[5. Liste de ressources sur le package `sf`](./links.md)
+</br> </br> [![](http://www.riate.cnrs.fr/wp-content/uploads/2013/12/riate_orange_high-300x56.png)](http://riate.cnrs.fr)

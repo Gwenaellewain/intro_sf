@@ -44,3 +44,11 @@ Billets de blogs / tutoriels
 -   [Landscape Ecology with R:A tutorial with raster and sf](http://jwhollister.com/r_landscape_tutorial/tutorial.html) - Jeffrey W. Hollister
 
 -   [Mapping “France at night” with the new sf package](http://sharpsightlabs.com/blog/mapping-france-night/) - Sharp Sight Labs
+
+[1. Introduction générale au package `sf`](./intro_sf.md)
+[2. Faire une carte en figurés proportionnels](./propsymb.md)
+[3. Faire une carte choroplèthe](./choro.md)
+[4. Faire une carte en carroyage](./carro.md)
+[5. Liste de ressources sur le package `sf`](./links.md)
+</br>
+</br> [![](http://www.riate.cnrs.fr/wp-content/uploads/2013/12/riate_orange_high-300x56.png)](http://riate.cnrs.fr)

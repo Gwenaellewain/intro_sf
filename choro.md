@@ -259,3 +259,10 @@ for (i in 1:10){
 ```
 
 ![](choro_files/figure-markdown_github/unnamed-chunk-5-1.png)![](choro_files/figure-markdown_github/unnamed-chunk-5-2.png)![](choro_files/figure-markdown_github/unnamed-chunk-5-3.png)![](choro_files/figure-markdown_github/unnamed-chunk-5-4.png)![](choro_files/figure-markdown_github/unnamed-chunk-5-5.png)![](choro_files/figure-markdown_github/unnamed-chunk-5-6.png)![](choro_files/figure-markdown_github/unnamed-chunk-5-7.png)![](choro_files/figure-markdown_github/unnamed-chunk-5-8.png)![](choro_files/figure-markdown_github/unnamed-chunk-5-9.png)![](choro_files/figure-markdown_github/unnamed-chunk-5-10.png)
+
+[1. Introduction générale au package `sf`](./intro_sf.md)
+[2. Faire une carte en figurés proportionnels](./propsymb.md)
+[3. Faire une carte choroplèthe](./choro.md)
+[4. Faire une carte en carroyage](./carro.md)
+[5. Liste de ressources sur le package `sf`](./links.md)
+</br> </br> [![](http://www.riate.cnrs.fr/wp-content/uploads/2013/12/riate_orange_high-300x56.png)](http://riate.cnrs.fr)

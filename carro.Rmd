@@ -31,7 +31,7 @@ output:
 
 ## Charger les libraires
 
-```{r}
+```{r, cache = TRUE}
 library(sf)
 ```
 
@@ -40,7 +40,7 @@ library(sf)
 
 Nous importons les données créées dans [le premier tutoriel](./intro_sf.md). 
 
-```{r}
+```{r, cache = TRUE}
 MEX_mun <- readRDS(file = "data/rds/MEX_mun.rds")
 ZMVM_ageb <- readRDS(file = "data/rds/ZMVM_ageb.rds")
 ZMVM_mun <- readRDS(file = "data/rds/ZMVM_mun.rds")
@@ -51,7 +51,7 @@ ZMVM_mun <- readRDS(file = "data/rds/ZMVM_mun.rds")
 
 Nous réalisons tout d'abord un traitment d'extraction de données pour se concentrer sur l'une des municipalités de la *ZMVM* : Xochimilco.
 
-```{r}
+```{r , cache = TRUE}
 # Extraire la municipalité de Xochimilco
 XOCH <- subset(ZMVM_mun, ZMVM_mun$ID == c("09013"))
 
@@ -71,7 +71,7 @@ XOCH_agebU <- st_sf(id = 1, geometry = XOCH_agebU) # Passer de sfc a sf
 La fonction `st_makegrid` permet de créer un maillage régulier sur l'étendue d'un objet `sf`. 
 La fonction `st_interpolate_aw`permet d'interpoler les données du maillage initial dans la grille.
 
-```{r}
+```{r , cache = TRUE}
 # Créer le maillage régulier (taille des cellules : 500 mètres de côté)
 cadrillage <- st_make_grid(XOCH, cellsize = 500)
 
@@ -100,7 +100,7 @@ cadrillage_POP$densite <- cadrillage_POP$POPULATION * 1000000 / st_area(cadrilla
 ## Faire la carte
 
 
-```{r}
+```{r , cache = TRUE}
 # Voir la répartition de nos données
 hist(cadrillage_POP$densite)
 summary(cadrillage_POP$densite)
@@ -175,7 +175,7 @@ mtext(text = " Auteur: S. Mora | Source: INEGI (2010), CONAPO (2012) ",
 
 On peut comparer la carte de densités en maille avec celle des densités par unité géostatistique. On verra que chaque carte offre des possibilités d'interprétation différentes. À  vous de juger!
 
-```{r}
+```{r , cache = TRUE}
 par(mfrow=c(1,2), mar = rep(0,4))
 
 # Première carte
@@ -239,3 +239,12 @@ text(x = 493500, y = 2118500,
      cex = 0.8, col = "#000004FF")
 ```
 
+
+[1. Introduction générale au package `sf`](./intro_sf.md)  
+[2. Faire une carte en figurés proportionnels](./propsymb.md)  
+[3. Faire une carte choroplèthe](./choro.md)  
+[4. Faire une carte en carroyage](./carro.md)  
+[5. Liste de ressources sur le package `sf`](./links.md)  
+</br>
+</br>
+[![](http://www.riate.cnrs.fr/wp-content/uploads/2013/12/riate_orange_high-300x56.png)](http://riate.cnrs.fr)

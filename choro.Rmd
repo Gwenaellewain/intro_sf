@@ -32,7 +32,7 @@ output:
 Ce tutoriel repose entièrement sur l'usage du *package* `sf`.
 
 
-```{r}
+```{r, cache = TRUE}
 library(sf)
 ```
 
@@ -41,7 +41,7 @@ library(sf)
 
 Nous importons les données créées dans [le premier tutoriel](./intro_sf.md). 
 
-```{r}
+```{r, cache = TRUE}
 MEX_est <- readRDS(file = "data/rds/MEX_est.rds")
 MEX_mun <- readRDS(file = "data/rds/MEX_mun.rds")
 ZMVM <- readRDS(file = "data/rds/ZMVM.rds")
@@ -55,7 +55,7 @@ ZMVM_munC <- readRDS(file = "data/rds/ZMVM_munC.rds")
 
 En cartographie, la couleur est une variable immédiatement et intensément perceptible, ce qui lui donne un fort pouvoir différentiel. Son emploi est très apprécié tant par le lecteur que par le cartographe, elle permet d’innombrables possibilités de variations visuelles et favorise l’esthétisme (Nicolas Lambert, [Carnet NÉOCARTOgraphique](http://neocarto.hypotheses.org/1458)). On verra donc une méthode simple pour créer une palette de couleurs adaptée à nos besoins cartographiques.
 
-```{r}
+```{r , cache = TRUE}
 # Voir la distribution des données
 summary(ZMVM_ageb$IMU)
 hist(ZMVM_ageb$IMU)
@@ -94,7 +94,7 @@ image(1:6, 1, as.matrix(1:6),
 
 R offre plusieurs options graphiques pour la conception de carte. La partie suivante, montre donc touts les choix qu’on été fait dans la contruction de la carte d'Indice de Marginalité Urbaine. Il suffit de changer quelques paramètres pour réussir a avoir son propre style cartographique.
 
-```{r, fig.height=8}
+```{r, fig.height=8 , cache = TRUE}
 # Choisir les paramètres de la fenêtre d'affichage
 opar <- par(mar = c(0,0,0,0), fig = c(0,1,0,1))
 
@@ -172,7 +172,7 @@ par(opar)
 L'utilisation de boucles permet d'automatiser certaines tâches répétitives. 
 Nous produisons ici 10 cartes en utilisant à chaque fois un champ différent de la table d’attributs. Les distribution statistiques des indicateurs sont très variées et nécessiterait d'être étudiées individuelement. Il s'agit donc uniquement d'un premier jet exploratoire.  
 
-```{r}
+```{r, cache = TRUE}
 # Créer une palette de couleurs
 couleurs1 <- colorRampPalette(c("#FCB900","#9B090A"), interpolate = "linear")(10)
 
@@ -254,3 +254,12 @@ for (i in 1:10){
 }
 ```
 
+
+[1. Introduction générale au package `sf`](./intro_sf.md)  
+[2. Faire une carte en figurés proportionnels](./propsymb.md)  
+[3. Faire une carte choroplèthe](./choro.md)  
+[4. Faire une carte en carroyage](./carro.md)  
+[5. Liste de ressources sur le package `sf`](./links.md)  
+</br>
+</br>
+[![](http://www.riate.cnrs.fr/wp-content/uploads/2013/12/riate_orange_high-300x56.png)](http://riate.cnrs.fr)
