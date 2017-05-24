@@ -1,5 +1,5 @@
-Introduction au package sf - Symboles proportionnels
-====================================================
+Faire une carte en figurés proportionnels
+=========================================
 
 ------------------------------------------------------------------------
 
@@ -11,7 +11,7 @@ Introduction au package sf - Symboles proportionnels
 1. Charger les libraires
 ------------------------
 
-Dans cette partie du tutoriel nous n'utiliserons que le *package* `sf`.
+Ce tutoriel repose entièrement sur le *package* `sf`.
 
 ``` r
 library(sf)
@@ -22,7 +22,7 @@ library(sf)
 2. Importer des données
 -----------------------
 
-Nous importons les données créées dans le premier tutoriel.
+Nous importons les données créées dans [le premier tutoriel](./blob/master/intro_sf.md).
 
 ``` r
 MEX_est <- readRDS(file = "data/rds/MEX_est.rds")
@@ -54,8 +54,8 @@ taille <- function(x, ref, cex){
 -----------------
 
 ``` r
-# Choisir les paramètres de la fenêtre d'affichage
-# opar <- par(mar = c(0,0,0,0), fig = c(0,1,0,1))
+opar <- par(mar = c(0,0,0,0), fig = c(0,1,0,1))
+
 
 # Afficher le fond de carte
 plot(st_geometry(ZMVM_mun),
@@ -63,10 +63,15 @@ plot(st_geometry(ZMVM_mun),
      border = "black", lty = 3, lwd = 0.5)
 
 # Afficher les symboles proportionnels
+# Il faut d'abord les trier de manière à ce que les plus gros cercles ne 
+# recouvrent pas les plus petits
 ZMVM_munC <- ZMVM_munC[order(ZMVM_munC$POPULATION, decreasing = T),]
 
 plot(st_geometry(ZMVM_munC),
-     pch = 21,  cex = taille(ZMVM_munC$POPULATION,max(ZMVM_munC$POPULATION),7),
+     pch = 21,  
+     cex = taille(x = ZMVM_munC$POPULATION, 
+                  ref = max(ZMVM_munC$POPULATION), 
+                  cex = 7),
      col = "White", bg = "#BC3471",
      add = T)
 
@@ -96,7 +101,9 @@ text(x = 540000, y = 2093000,
 
 # Ajouter une légende
 # Tout d'abord on choisit les classes que l'on veut utliser pour la légende
-classes <- (c(max(ZMVM_munC$POPULATION), median(ZMVM_munC$POPULATION), min(ZMVM_munC$POPULATION)))
+classes <- c(max(ZMVM_munC$POPULATION), 
+             median(ZMVM_munC$POPULATION), 
+             min(ZMVM_munC$POPULATION))
 
 # Cette fonction permet de traduire la position de notre légende dans les
 # coordonnées de la carte.
@@ -104,14 +111,14 @@ xleg <- grconvertX(c(0.1), from = "ndc", to = "user")
 yleg <- grconvertY(c(0), from = "ndc", to = "user")
 
 # Afficher la légende
-legend(x = xleg, y = yleg, 
+legend(x = xleg, y = yleg, title = "Population",
        legend = classes,
        pch = 21, pt.cex = taille(classes,max(ZMVM_munC$POPULATION),7),
        col = "White", pt.bg = "#BC3471",
        box.col = NA, bg = NA,
        cex = 0.8,
        xjust = 0, yjust = 0,
-       x.intersp = 4, y.intersp = 4)
+       x.intersp = 3, y.intersp = 2)
 
 # Ajouter les réferences et sources
 mtext(text = " Auteur: S. Mora | Source: INEGI (2010), CONAPO (2012), Relief: INEGI (2016) ",

@@ -10,9 +10,9 @@ Pour reproduire les exemples proposés il vous suffit de [télécharger tout le 
 
 
 
-1. Introduction générale au package `sf`
+[1. Introduction générale au package `sf`](./blob/master/intro_sf.md)
 
-2. Faire une carte en figurés proportionnels
+[2. Faire une carte en figurés proportionnels](./blob/master/propsymb.md)
 
 3. Faire une carte choroplèthe
 
