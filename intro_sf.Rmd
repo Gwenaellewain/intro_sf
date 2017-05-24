@@ -17,7 +17,7 @@ output:
 
   **L’objectif de ce tutoriel est principalement d'introduire les utilisateurs de SIG à l'utilisation de R pour la construction de cartes thématiques. Tout en reconnaissant la grande diversité d’outils qui permettent les traitements et les représentation spatiales avec R, ce tutoriel s’appuie principalement sur l’utilisation du *package* [`sf`](https://github.com/edzer/sfr) récemment développé par Edzer Pebesma et successeur désigné des packages [`sp`](https://cran.r-project.org/web/packages/sp/index.html), [`rgeos`](https://cran.r-project.org/web/packages/rgeos/index.html) et [`rgdal`](https://cran.r-project.org/web/packages/rgdal/index.html).**
 
-Une liste de resources portant sur l'utilisation du package `sf` est disponible à la fin de ce document.  
+
 
 ---
 

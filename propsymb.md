@@ -1,17 +1,21 @@
 Faire une carte en figurés proportionnels
 =========================================
 
+</br> </br>
+
+**L’objectif de ce tutoriel est de réaliser une carte en symboles proportionnels.**
+
 ------------------------------------------------------------------------
 
-<img src="./img/popAbs.png" alt="Densité de population" style="width:450px;position:relative; 
+<img src="./img/popAbs.png" alt="Population" style="width:450px;position:relative; 
  margin-left: 50px; margin-right: auto;">
 
 ------------------------------------------------------------------------
 
-1. Charger les libraires
-------------------------
+Charger les libraires
+---------------------
 
-Ce tutoriel repose entièrement sur le *package* `sf`.
+Ce tutoriel repose entièrement sur l'usage du *package* `sf`.
 
 ``` r
 library(sf)
@@ -19,10 +23,10 @@ library(sf)
 
     ## Linking to GEOS 3.5.1, GDAL 2.1.2, proj.4 4.9.2, lwgeom 2.3.2 r15302
 
-2. Importer des données
------------------------
+Importer des données
+--------------------
 
-Nous importons les données créées dans [le premier tutoriel](./blob/master/intro_sf.md).
+Nous importons les données créées dans [le premier tutoriel](./intro_sf.md).
 
 ``` r
 MEX_est <- readRDS(file = "data/rds/MEX_est.rds")
@@ -33,8 +37,8 @@ ZMVM_mun <- readRDS(file = "data/rds/ZMVM_mun.rds")
 ZMVM_munC <- readRDS(file = "data/rds/ZMVM_munC.rds")
 ```
 
-3. Paramétrage des cercles
---------------------------
+Paramétrage des cercles
+-----------------------
 
 Le *package* `sf` permet d'afficher des symboles et de faire varier leur taille en fonctions des valeurs d'un des champs de la base de données. Cependant, quand il s'agit de cercles, il est sémiologiquement incorrect d'établir une relation directe entre les valeurs absolues et le diamètre (ou le rayon) des symboles. Il faut plutôt utiliser la surface des symboles. Pour établir une relation entre les valeurs de la variable et la **surface** des cercles nous pouvons utiliser la fonction suivante :
 
@@ -50,10 +54,11 @@ taille <- function(x, ref, cex){
 # "ref" sera la valeur de référence que l'on veut associer à une taille "cex".
 ```
 
-4. Faire la carte
------------------
+Faire la carte
+--------------
 
 ``` r
+# Choisir les paramètres de la fenêtre d'affichage
 opar <- par(mar = c(0,0,0,0), fig = c(0,1,0,1))
 
 
@@ -126,3 +131,8 @@ mtext(text = " Auteur: S. Mora | Source: INEGI (2010), CONAPO (2012), Relief: IN
 ```
 
 ![](propsymb_files/figure-markdown_github/unnamed-chunk-4-1.png)
+
+``` r
+#réinitialiser la fenêtre graphique
+par(opar)
+```

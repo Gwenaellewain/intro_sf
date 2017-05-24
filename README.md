@@ -10,13 +10,13 @@ Pour reproduire les exemples proposés il vous suffit de [télécharger tout le 
 
 
 
-[1. Introduction générale au package `sf`](./blob/master/intro_sf.md)
+[1. Introduction générale au package `sf`](./intro_sf.md)
 
-[2. Faire une carte en figurés proportionnels](./blob/master/propsymb.md)
+[2. Faire une carte en figurés proportionnels](./propsymb.md)
 
-3. Faire une carte choroplèthe
+[3. Faire une carte choroplèthe](./choro.md)
 
-4. Faire une carte en carroyage
+[4. Faire une carte en carroyage](./carro.md)
 
-5. Liste de ressources sur le package `sf`
+[5. Liste de ressources sur le package `sf`](./links.md)
 
