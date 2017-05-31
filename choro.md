@@ -3,7 +3,7 @@ Faire une carte chorplèthe
 
 </br> </br>
 
-**Cette partie a pour objectif la construction d’une carte de ratios. Pour faire une carte choroplèthe il faudra créer des palettes de couleurs et choisir une discrétisation des valeurs qui soit statistiquement et visuellement intéressante. La dernière partoe explique comment créer une série de cartes.**
+**Cette partie a pour objectif la construction d’une carte de ratios. Pour faire une carte choroplèthe il faudra créer des palettes de couleurs et choisir une discrétisation des valeurs qui soit statistiquement et visuellement intéressante. A la fin, on explique comment créer une série de cartes avec une boucle.**
 
 ------------------------------------------------------------------------
 
@@ -94,7 +94,7 @@ image(1:6, 1, as.matrix(1:6),
 
 ### 4. Faire la carte
 
-R offre plusieurs options graphiques pour la conception de carte. La partie suivante, montre donc touts les choix qu’on été fait dans la contruction de la carte d'Indice de Marginalité Urbaine. Il suffit de changer quelques paramètres pour réussir a avoir son propre style cartographique.
+R offre plusieurs options graphiques pour la conception de carte. La partie suivante, montre donc tous les choix qu’ont été fait dans la construction de la carte d'Indice de Marginalité Urbaine. Il suffit de changer quelques paramètres pour réussir à avoir son propre style cartographique.
 
 ``` r
 # Choisir les paramètres de la fenêtre d'affichage
@@ -105,8 +105,8 @@ plot(st_geometry(ZMVM),
      col = "#F5F6F1",
      border = NA)
 
-# Afficher la couche choroplète, ici on fait appel à la fonction 'findInterval' pour que
-# les couleurs soient associées aux classes que l'on a définit précédement.
+# Afficher la couche choroplèthe, ici on fait appel à la fonction 'findInterval' pour que
+# les couleurs soient associées aux classes que l'on a défini précédemment.
 plot(st_geometry(ZMVM_ageb),
      col = couleurs[findInterval(ZMVM_ageb$IMU, vec = classes, all.inside = TRUE)],
      border = NA,
@@ -142,7 +142,7 @@ text(x = 540000, y = 2093000,
      labels = "20 km",
      cex = 0.8, col = "#000004FF")
 
-# Ajouter les réferences et sources
+# Ajouter les références et les sources
 mtext(text = " Auteur: S. Mora | Source: INEGI (2010), CONAPO (2012), Relief: INEGI (2016) ",
       side = 1, line = -1, adj = 0, cex = 0.5, col = "grey50")
 
@@ -152,7 +152,7 @@ par(fig = c(0.05,0.5,0.08,0.3),
     mar = c(0,0,0,0),
     new = TRUE)
 
-# Afficher l'histogramme qui sera utlisé comme légende
+# Afficher l'histogramme qui sera utilisé comme légende
 hist(ZMVM_ageb$IMU, breaks = classes, freq = FALSE,
      col = couleurs, axes = F, xlab = "", ylab = "",
      main = "", border = "White")
@@ -174,7 +174,7 @@ par(opar)
 
 ### 5. Faire plusieurs cartes d'un coup
 
-L'utilisation de boucles permet d'automatiser certaines tâches répétitives. Nous produisons ici 10 cartes en utilisant à chaque fois un champ différent de la table d’attributs. Les distribution statistiques des indicateurs sont très variées et nécessiterait d'être étudiées individuelement. Il s'agit donc uniquement d'un premier jet exploratoire.
+L'utilisation de boucles permet d'automatiser certaines tâches répétitives. Nous produisons ici 10 cartes en utilisant à chaque fois un champ différent de la table d’attributs. Les distributions statistiques des indicateurs sont très variées et nécessiteraient d'être étudiées individuellement. Il s'agit donc uniquement d'un premier jet exploratoire.
 
 ``` r
 # Créer une palette de couleurs
@@ -201,7 +201,7 @@ leg10 <- c("Pourcentage d'habitations sans\nréfrigérateur")
 # Et on les sauvegarde dans une liste
 leg <- list(leg1,leg2,leg3,leg4,leg5,leg6,leg7,leg8,leg9,leg10)
 
-# On fait une vecteur avec le nom des variables que l'on veut représenter
+# On fait un vecteur avec le nom des variables que l'on veut représenter
 indices <- paste0("Indice", seq(1,10,1))
 
 #Afficher les couches de cartes
@@ -225,7 +225,7 @@ for (i in 1:10){
        border="Black", lwd = 1.5,
        add=T)
   
-  mtext(text = " Marginalité dans Zone Métropolitaine du Valle de México", 
+  mtext(text = " Marginalité dans Zone métropolitaine de la vallée de México", 
         side = 3, line = -1, adj = 0, cex = 1, col = "#000004FF")
   
   mtext(text = "S\n▼", 

@@ -43,7 +43,7 @@ Paramétrage des cercles
 Le *package* `sf` permet d'afficher des symboles et de faire varier leur taille en fonctions des valeurs d'un des champs de la base de données. Cependant, quand il s'agit de cercles, il est sémiologiquement incorrect d'établir une relation directe entre les valeurs absolues et le diamètre (ou le rayon) des symboles. Il faut plutôt utiliser la surface des symboles. Pour établir une relation entre les valeurs de la variable et la **surface** des cercles nous pouvons utiliser la fonction suivante :
 
 ``` r
-# Fonction pour aboutir a une taille de cercles correcte
+# Fonction pour aboutir à une taille de cercles correcte
 # Cette fonction permet aussi d'établir une valeur de référence pour contrôler la taille des cercles
 taille <- function(x, ref, cex){
   t <- sqrt(x)
@@ -81,7 +81,7 @@ plot(st_geometry(ZMVM_munC),
      add = T)
 
 
-# Afficher les limites ed la ZMVM
+# Afficher les limites de la ZMVM
 plot(st_geometry(ZMVM),
      col = NA,
      border = "Black", lwd = 1.5,
@@ -105,7 +105,7 @@ text(x = 540000, y = 2093000,
      cex = 0.8, col = "#000004FF")
 
 # Ajouter une légende
-# Tout d'abord on choisit les classes que l'on veut utliser pour la légende
+# Tout d'abord on choisit les classes que l'on veut utiliser pour la légende
 classes <- c(max(ZMVM_munC$POPULATION), 
              median(ZMVM_munC$POPULATION), 
              min(ZMVM_munC$POPULATION))
@@ -125,7 +125,7 @@ legend(x = xleg, y = yleg, title = "Population",
        xjust = 0, yjust = 0,
        x.intersp = 3, y.intersp = 2)
 
-# Ajouter les réferences et sources
+# Ajouter les références et sources
 mtext(text = " Auteur: S. Mora | Source: INEGI (2010), CONAPO (2012), Relief: INEGI (2016) ",
       side = 1, line = -1, adj = 0, cex = 0.5, col = "grey50")
 ```
@@ -133,7 +133,7 @@ mtext(text = " Auteur: S. Mora | Source: INEGI (2010), CONAPO (2012), Relief: IN
 ![](propsymb_files/figure-markdown_github/unnamed-chunk-4-1.png)
 
 ``` r
-#réinitialiser la fenêtre graphique
+# réinitialiser la fenêtre graphique
 par(opar)
 ```
 

@@ -30,17 +30,17 @@ output:
 
 
 
-La construction d’une **carte thématique** se déroule en plusieurs étapes comprenant la mises en forme, l'import, l'interprétation et la représentation des données. L’ensemble de cette chaîne mobilisait jusqu’à récemment un ensemble de logiciels de statistique, d’analyse spatiale et d’édition cartographique. Aujourd’hui, et concomitament à la disponibilité croissante de bases de données géoréférencés, les outils permettant les traitements cartographiques se diversifient. Les systèmes d’information géographique (SIG) intègrent des nouveaux d’outils et deviennent de plus en plus accessibles. R, s'il n'est pas a proprement parlé un SIG à part entière permet cependant d'effectuer toutes les opérations de la chaîne de traitement des données géographiques de la mise en forme à la représentation.
+La construction d’une **carte thématique** se déroule en plusieurs étapes comprenant la mise en forme, l'import, l'interprétation et la représentation des données. L’ensemble de cette chaîne mobilisait jusqu’à récemment un ensemble de logiciels de statistique, d’analyse spatiale et d’édition cartographique. Aujourd’hui, et concomitamment à la disponibilité croissante de bases de données géoréférencés, les outils permettant les traitements cartographiques se diversifient. Les systèmes d’information géographique (SIG) intègrent des nouveaux d’outils et deviennent de plus en plus accessibles. R, s'il n'est pas a proprement parlé un SIG à part entière permet cependant d'effectuer toutes les opérations de la chaîne de traitement des données géographiques de la mise en forme à la représentation.
 
 
-[R](https://www.r-project.org/) est un logiciel et un langage, dont la première version officielle fut publiéé en 2000, qui permet l’utilisation de plusieurs techniques d’analyse statistique. Dès le début ses créateurs s'appliquèrent à rendre possible la contribution des utilisateurs dans son développement. Il est construit dans un langage qui permet de créer des fonctions et de les ajouter au logiciel. Ainsi, au fil des années, les possibilités d’utilisation de R s’élargissent via les *packages* et le rendent polyvalent. C’est pour cette raison qu’il concurrence ou qu’il remplace toute une gamme de logiciels et de langages préexistants (Giraud & Lambert, 2017), non seulement sur plusieurs terrains d'analyse statistique, mais aussi dans le monde de la représentation graphique. En effet, R propose d’intéressantes sorties graphiques tout en laissant aux utilisateurs un contrôle complet.  
+[R](https://www.r-project.org/) est un logiciel et un langage, dont la première version officielle fut publiée en 2000, qui permet l’utilisation de plusieurs techniques d’analyse statistique. Dès le début ses créateurs s'appliquèrent à rendre possible la contribution des utilisateurs dans son développement. Il est construit dans un langage qui permet de créer des fonctions et de les ajouter au logiciel. Ainsi, au fil des années, les possibilités d’utilisation de R s’élargissent via les *packages* et le rendent polyvalent. C’est pour cette raison qu’il concurrence ou qu’il remplace toute une gamme de logiciels et de langages préexistants (Giraud & Lambert, 2017), non seulement sur plusieurs terrains d'analyse statistique, mais aussi dans le monde de la représentation graphique. En effet, R propose d’intéressantes sorties graphiques tout en laissant aux utilisateurs un contrôle complet.  
 
 
 ## Présentation des données
 
 L’objectif que nous nous donnons ici est de réaliser de réaliser de carte thématiques de la *Zone métropolitaine de la vallée de Mexico* (ZMVM). Nous utiliserons pour cela les Surfaces Géostatiques de Base (AGEB en espagnol), dont les géométries et les données associées sont distribuées par l’[Institut National de Géographie et Statistique du Mexique](http://www.inegi.org.mx/default.aspx) (INEGI en espagnol). La ZMVM est l’aire urbaine de la capitale du pays, formée par les 16 délégations de la Ville de Mexico et soixante municipalités voisines des États d'Hidalgo et de Mexico. Il s’agit d’une des agglomérations les plus peuplées du monde avec plus de 20 millions d’habitants.
 
-Les données qui seront cartographiées portent sur la marginalité dans les zones urbaines et sont issues du [Conseil National de Population du Mexique](http://www.conapo.gob.mx/es/CONAPO/Descargas) (CONAPO en espagnol). La table, en format `CSV`, regroupe les diférents indices que la CONAPO utilise pour calculer l'indice de marginalité urbaine. En voici la description générale:
+Les données qui seront cartographiées portent sur la marginalité dans les zones urbaines et sont issues du [Conseil National de Population du Mexique](http://www.conapo.gob.mx/es/CONAPO/Descargas) (CONAPO en espagnol). La table, en format `CSV`, regroupe les différents indices que la CONAPO utilise pour calculer l'indice de marginalité urbaine. En voici la description générale:
 
 |Champ|Description|
 |:---------|:------------------------------------------------------------------|
@@ -51,8 +51,8 @@ Les données qui seront cartographiées portent sur la marginalité dans les zon
 |POP_SSPub|Pourcentage de population sans accès à la santé publique|
 |MortInf|Pourcentage d'enfants morts de femmes entre 15 et 49 ans|
 |H_SEauC|Pourcentage d'habitations sans eau courante|
-|H_SCEg|Pourcentage d'habitations sans conexion aux égoûts|
-|H_STCEg|Pourcentage d'habitations sans toilettes connectées aux égoûts|
+|H_SCEg|Pourcentage d'habitations sans connexion aux égouts|
+|H_STCEg|Pourcentage d'habitations sans toilettes connectées aux égouts|
 |H_Terre|Pourcentage d'habitations avec un sol en terre|
 |H_Surp|Pourcentage d'habitations surpeuplées|
 |H_SRef|Pourcentage d'habitations sans réfrigérateur|
@@ -65,7 +65,7 @@ Les données qui seront cartographiées portent sur la marginalité dans les zon
 R est composé d’un socle commun (`r-base`) sur lequel se greffe un ensemble de librairies ou *packages*. Il s'agit de fonctions implémentées par les utilisateurs et mises à disposition de tous par l’intermédiaire de dépôts regroupés dans le cadre du [Comprehensive R Archive Network](https://cran.r-project.org/) (CRAN).
 
 ```{r, cache=TRUE}
-# chargement (et installation s'il n'est pas déjà présent) du package
+# chargemment (et installation s'il n'est pas déjà présent) du package
 if(!require('sf')){
   install.packages('sf')
   library('sf')
@@ -104,7 +104,7 @@ head(df_ageb, 5) # Voir les cinq premières lignes des données
 summary(df_ageb$POPULATION) # Voir le résumé de l'information
 ```
 
-Ils contiennent également des informations sur leur géométries :
+Ils contiennent également des informations sur leurs géométries :
 ```{r, cache=TRUE}
 st_crs(x = df_ageb) # Voir la projection de la couche
 st_bbox(obj = df_ageb) # Voir la bounding box de la couche
@@ -126,7 +126,7 @@ plot(st_geometry(MEX_mun), # On demande l'affichage la géométrie de l'objet
 plot(st_geometry(MEX_est), 
      col = NA,
      border = "black",
-     lwd = 1,
+     lwd = 0.8,
      add = TRUE) # Ajouter cette couche à celle précedement affichée
 
 ```
@@ -137,15 +137,15 @@ plot(st_geometry(MEX_est),
 Pour manipuler et mettre en forme nos couches géographiques `sf` permet la majorité des géotraitements SIG.
 Nous mettrons en place les traitements suivants :
 
-  * reprojection
+  * projection
   * assemblage de couches
-  * selection d'un sous-ensemble des données
+  * sélection d'un sous-ensemble des données
   * agrégation
-  * extraction des centroides
+  * extraction des centroïdes
 
 
 #### Reprojection
-Plusieurs couches ne semble pas utiliser la même projection :
+Plusieurs couches ne semblent pas utiliser la même projection :
 ```{r, cache=TRUE}
 st_crs(x = hgo_ageb) == st_crs(x = MEX_est) 
 ```
@@ -162,7 +162,7 @@ projMexique$epsg
 projMexique$proj4string
 ```
 
-La fonction `st_transform` permet de reprojeter les objets `sf`:
+La fonction `st_transform` permet de changer la projection des objets `sf`:
 
 ```{r, cache=TRUE}
 # Changer la projection des couches
@@ -172,8 +172,8 @@ MEX_mun <- st_transform(x = MEX_mun, crs = projMexique)
 
 
 
-#### Assembler plusieures couches
-La fonction `rbind` peut être utiliser pour assembler plusieurs couches.
+#### Assembler plusieurs couches
+La fonction `rbind` peut être utilisée pour assembler plusieurs couches.
 ```{r, cache=TRUE}
 # Joindre plusieurs couches
 ageb <- rbind(df_ageb, emex_ageb, hgo_ageb)
@@ -182,13 +182,13 @@ ageb <- rbind(df_ageb, emex_ageb, hgo_ageb)
 plot(st_geometry(ageb), col = "grey", border = NA)
 # puis les couches constitutives
 plot(st_geometry(df_ageb), col = NA, border = "red", lwd = 0.1, add=T)
-plot(st_geometry(emex_ageb), col = NA, border = "blue", lwd = 0.1, add=T)
-plot(st_geometry(hgo_ageb), col = NA, border = "green", lwd = 0.1, add=T)
+plot(st_geometry(emex_ageb), col = NA, border = "#916600", lwd = 0.1, add=T)
+plot(st_geometry(hgo_ageb), col = NA, border = "grey50", lwd = 0.1, add=T)
 ```
 
 
-#### Selectionner des entités 
-Ici nous extrayons les entités faisant partie de la Zone Métropolitaine de Mexico. Ces entités sont identifiée par la valeur 1 dans le champs ZMVM. 
+#### Sélectionner des entités 
+Ici nous extrayons les entités faisant partie de la Zone Métropolitaine de Mexico. Ces entités sont identifiées par la valeur 1 dans le champs ZMVM. 
 
 ```{r, cache=TRUE}
 # Créer un sous-ensemble de nos couches
@@ -196,13 +196,13 @@ ZMVM_mun <- MEX_mun[MEX_mun$ZMVM == 1,]
 ZMVM_ageb <- ageb[ageb$ZMVM == 1,]
 
 # affichage de toutes les municipalités
-plot(st_geometry(MEX_mun), col=NA, border = "blue")
+plot(st_geometry(MEX_mun), col=NA, border = "grey50")
 # affichage des municipalités de la ZMVM
 plot(st_geometry(ZMVM_mun), col = "red", border = NA, add = T)
 ```
 
 
-#### Agéger des polygones
+#### Agréger des polygones
 
 ```{r, cache=TRUE}
 # Agréger les polygones
@@ -213,16 +213,16 @@ class(ZMVM) # Cette opération créé un objet sfc
 ZMVM <- st_sf(id = 1, geometry=ZMVM) # Que l'on peut retransformer en objet sf
 
 # affichage de la couche des municipalités de la ZMVM
-plot(st_geometry(ZMVM_mun), col = "lightblue", border = "olivedrab", lwd = 0.5)
+plot(st_geometry(ZMVM_mun), col = "grey90", border = "#916600", lwd = 0.5)
 # affichage de la couche de la ZMVM
-plot(st_geometry(ZMVM), col = NA, border = 'brown4', lwd = 2, add=T)
+plot(st_geometry(ZMVM), col = NA, border = 'black', lwd = 1, add=T)
 
 ```
 
-#### Extraire des centroides
+#### Extraire des centroïdes
 
 ```{r, cache=TRUE}
-# Extraire les centroides des polygones
+# Extraire les centroïdes des polygones
 ZMVM_munC <- st_centroid(ZMVM_mun)
 
 # Afficher les couches
@@ -263,8 +263,8 @@ ZMVM_ageb$Superficie <- st_area(ZMVM_ageb)
 
 class(ZMVM_ageb$Superficie)
 
-# Les unité sont définies par la projection. Ici on est en mètres carrés, il
-# faut donc les transformer en kilomètres carrés grace au package units
+# Les unités sont définies par la projection. Ici on est en mètres carrés, il
+# faut donc les transformer en kilomètres carrés grâce au package 'units'
 library(units)
 units(ZMVM_ageb$Superficie) <- with(ud_units, km^2)
 
@@ -272,7 +272,7 @@ units(ZMVM_ageb$Superficie) <- with(ud_units, km^2)
 ZMVM_ageb$DensPop <- ZMVM_ageb$POPULATION/ZMVM_ageb$Superficie
 
 # Carte basique de la densité de population
-plot(st_geometry(ZMVM), col = "grey")
+plot(st_geometry(ZMVM), col = "grey90")
 plot(ZMVM_ageb['DensPop'], border = NA, add=T)
 title("Densité de population")
 ```

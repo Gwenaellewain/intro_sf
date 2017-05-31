@@ -18,7 +18,7 @@ output:
 </br>
 
 
-**Cette partie est destinée a la création d’une carte ou le maillage initial est transformé en maillage régulier. Ce type de transformation est particulièrement utile quand la comparaisons de cartes est rendue difficile à cause maillage très différents ou très hétérogènes. Nous allons créer un maillage régulier sur l'une des municipalités de la *Zone métropolitaine de la vallée de México* et y transférer les données des AGEB pour produire une carte de densité.** 
+**Cette partie est destinée à la création d’une carte ou le maillage initial est transformé en maillage régulier. Ce type de transformation est particulièrement utile quand la comparaison de cartes est rendue difficile à cause maillage très différents ou très hétérogènes. Nous allons créer un maillage régulier sur l'une des municipalités de la *Zone métropolitaine de la vallée de México* et y transférer les données des AGEB pour produire une carte de densités.** 
 
 
 ---
@@ -49,7 +49,7 @@ ZMVM_mun <- readRDS(file = "data/rds/ZMVM_mun.rds")
 
 ## Traitement des couches
 
-Nous réalisons tout d'abord un traitment d'extraction de données pour se concentrer sur l'une des municipalités de la *ZMVM* : Xochimilco.
+Nous réalisons tout d'abord un traitement d'extraction de données pour se concentrer sur l'une des municipalités de la *ZMVM* : Xochimilco.
 
 ```{r , cache = TRUE}
 # Extraire la municipalité de Xochimilco
@@ -77,7 +77,7 @@ cadrillage <- st_make_grid(XOCH, cellsize = 500)
 
 # On affiche la grille
 plot(st_geometry(XOCH))
-plot(st_geometry(XOCH_agebU), add=T, col = "red", lwd = 0.2)
+plot(st_geometry(XOCH_agebU), add=T, col = "grey90", lwd = 0.2)
 plot(cadrillage, border = "grey70", add = T)
 
 # Faire l'intersection et les zones urbaines
@@ -165,7 +165,7 @@ text(x = 483500, y = 2118500,
      labels = "3 km",
      cex = 0.8, col = "#000004FF")
 
-# Ajouter les réferences et sources
+# Ajouter les références et les sources
 mtext(text = " Auteur: S. Mora | Source: INEGI (2010), CONAPO (2012) ",
       side = 1, line = -1, adj = 0, cex = 0.5, col = "grey50")
 ```
